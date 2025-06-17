@@ -16,7 +16,7 @@ public class DiccionarioSimpleString implements DiccionarioSimpleStringTDA {
 	
 	@Override
 	public void inicializarDiccionario() {
-	
+		primero = null;
 	}
 
 	@Override
