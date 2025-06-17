@@ -14,39 +14,56 @@ public class ColaPrioridad implements ColaPrioridadTDA {
 	
 	@Override
 	public void inicializarCola() {
-		
+		primero=null;
 	}
 
 
 	@Override
 	public void acolarPrioridad(int valor, int prioridad) {
+		nodo nuevo = new nodo();
+		nuevo.prioridad=prioridad;
+		nuevo.valor=valor;
 
-	}
+		if(primero==null||prioridad<primero.prioridad){
+			nuevo.siguiente=primero;
+			primero=nuevo;
+		}
+		else {
+			nodo actual = primero;
+			while(actual.siguiente!=null && actual.siguiente.prioridad<=prioridad){
+				actual=actual.siguiente;
+			}
 
+			nuevo.siguiente=actual.siguiente;
+			actual.siguiente=nuevo;
+			}
+
+		}
 
 	@Override
 	public void desacolar() {
-		
+		if(primero != null){
+			primero=primero.siguiente;
+		}
 	}
 
 
 	@Override
 	public int primero() {
-		return 0;
+		return primero.valor;
 		
 	}
 
 
 	@Override
 	public int prioridad() {
-		return 0;
-		
+		return primero.prioridad;
 	}
 
 
 	@Override
 	public boolean colaVacia() {
-		return false;
+		return primero==null;
 		
 	}
 
